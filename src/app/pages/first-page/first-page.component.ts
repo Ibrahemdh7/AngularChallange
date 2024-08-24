@@ -30,7 +30,7 @@ export class FirstPageComponent implements OnInit {
       ],
       chart: {
         height: 350,
-        type: "line"
+        type: "area"
       },
      
       xaxis: {

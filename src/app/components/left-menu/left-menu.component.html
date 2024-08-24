@@ -1,0 +1,32 @@
+<div class="bg-white h-screen w-64 p-4 shadow-lg">
+  <!-- Logo -->
+  <div class="flex items-center mb-6">
+    <fa-icon [icon]="['fas', 'file-alt']" class="w-5 h-5"></fa-icon>
+    <span class="ml-2 text-xl font-semibold text-gray-800">Arabic Tech</span>
+
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <ul class="space-y-2">
+      <li>
+        <a routerLink="first-page" routerLinkActive="bg-purple-100 text-purple-600" class="flex items-center p-2 text-gray-700 hover:bg-purple-100 rounded-lg group">
+          <fa-icon [icon]="['fas', 'home']" class="w-5 h-5 text-gray-500 group-hover:text-purple-600"></fa-icon>
+          <span class="ml-3">First Page</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/second-page" routerLinkActive="bg-purple-100 text-purple-600" class="flex items-center p-2 text-gray-700 hover:bg-purple-100 rounded-lg group">
+          <fa-icon [icon]="['fas', 'file-alt']" class="w-5 h-5 text-gray-500 group-hover:text-purple-600"></fa-icon>
+          <span class="ml-3">Second Page</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/third-page" routerLinkActive="bg-purple-100 text-purple-600" class="flex items-center p-2 text-gray-700 hover:bg-purple-100 rounded-lg group">
+          <fa-icon [icon]="['fas', 'cogs']" class="w-5 h-5 text-gray-500 group-hover:text-purple-600"></fa-icon>
+          <span class="ml-3">Third Page</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

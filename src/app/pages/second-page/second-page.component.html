@@ -1,0 +1,85 @@
+<div class="max-w-7xl mx-auto p-4 sm:p-6 space-y-6 -ml-4 sm:-ml-10">
+  <!-- Search Filter -->
+  <div class="bg-white rounded-lg shadow-sm p-4 sm:p-6">
+      <h2 class="text-xl font-semibold mb-4">Search Filter</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <p-dropdown [options]="roles" placeholder="Select Role" class="w-full"></p-dropdown>
+          <p-dropdown [options]="plans" placeholder="Select Plan" class="w-full"></p-dropdown>
+          <p-dropdown [options]="statuses" placeholder="Select Status" class="w-full"></p-dropdown>
+      </div>
+  </div>
+
+  <!-- Table Controls -->
+  <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+      <p-dropdown [options]="[10, 20, 30]" class="w-full sm:w-auto"></p-dropdown>
+      <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
+          <span class="p-input-icon-left w-full sm:w-auto">
+              <i class="pi pi-search"></i>
+              <input type="text" pInputText placeholder="Search..." class="w-full">
+          </span>
+          <button pButton type="button" label="Export" icon="pi pi-download" class="p-button-outlined"></button>
+          <button pButton type="button" label="+ Add New User" icon="pi pi-plus" class="p-button-primary"></button>
+      </div>
+  </div>
+
+  <!-- User Table -->
+  <div class="bg-white rounded-lg shadow-md overflow-x-auto">
+      <p-table [value]="users" responsiveLayout="scroll" [paginator]="true" [rows]="10" 
+               styleClass="p-datatable-sm p-datatable-striped">
+          <ng-template pTemplate="header">
+              <tr class="bg-gray-50">
+                  <th class="text-left p-3">User</th>
+                  <th class="text-left p-3">Role</th>
+                  <th class="text-left p-3">Plan</th>
+                  <th class="text-left p-3">Billing</th>
+                  <th class="text-left p-3">Status</th>
+                  <th class="text-left p-3">Actions</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-user>
+              <tr>
+                  <td class="p-3">
+                      <div class="flex items-center">
+                          <img [src]="user.avatar" class="h-10 w-10 rounded-full mr-3" alt="Avatar">
+                          <div>
+                              <div class="font-medium">{{user.name}}</div>
+                              <div class="text-sm text-gray-500">{{user.email}}</div>
+                          </div>
+                      </div>
+                  </td>
+                  <td class="p-3">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
+                          {{user.role}}
+                      </span>
+                  </td>
+                  <td class="p-3">
+                      <i class="pi pi-briefcase mr-2"></i>{{user.plan}}
+                  </td>
+                  <td class="p-3">
+                      <i class="pi pi-credit-card mr-2"></i>{{user.billing}}
+                  </td>
+                  <td class="p-3">
+                      <span class="px-2 py-1 text-xs font-semibold rounded-full"
+                            [ngClass]="{
+                              'bg-green-100 text-green-800': user.status === 'Active',
+                              'bg-yellow-100 text-yellow-800': user.status === 'Pending',
+                              'bg-red-100 text-red-800': user.status === 'Inactive'
+                            }">
+                          <i class="pi" [ngClass]="{
+                              'pi-check-circle': user.status === 'Active',
+                              'pi-clock': user.status === 'Pending',
+                              'pi-times-circle': user.status === 'Inactive'
+                            }"></i>
+                          {{user.status}}
+                      </span>
+                  </td>
+                  <td class="p-3">
+                      <button pButton type="button" icon="pi pi-pencil" class="p-button-text p-button-sm" pTooltip="Edit"></button>
+                      <button pButton type="button" icon="pi pi-trash" class="p-button-text p-button-danger p-button-sm" pTooltip="Delete"></button>
+                      <button pButton type="button" icon="pi pi-ellipsis-v" class="p-button-text p-button-sm" pTooltip="More"></button>
+                  </td>
+              </tr>
+          </ng-template>
+      </p-table>
+  </div>
+</div>
